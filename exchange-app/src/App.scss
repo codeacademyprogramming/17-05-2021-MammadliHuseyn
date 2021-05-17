@@ -20,26 +20,53 @@ body {
   background-blend-mode: soft-light, normal;
   justify-content: center;
   border-radius: 10px;
-  padding:20px 30px;
+  padding: 20px 30px;
   label {
     display: block;
     color: #9da5b7;
   }
   input,
-  &+button {
+  & + button {
     border-radius: 5px;
     border: none;
     font-size: 20px;
   }
-  &+button {
-    width:100%;
-    background-color:#1654F0;
-    color:#fff;
-    padding:10px;
+  & + button {
+    width: 100%;
+    background-color: #1654f0;
+    color: #fff;
+    padding: 10px;
   }
   input {
     color: #162548;
     width: 50%;
     padding: 5px;
+  }
+  img {
+    cursor: pointer;
+  }
+  select {
+    border: none;
+    border-radius: 10px;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+}
+.fadeAnimate {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
   }
 }

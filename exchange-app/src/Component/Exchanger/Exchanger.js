@@ -3,7 +3,6 @@ import currency from "./rates.json";
 
 const Exchanger = () => {
 
-
     const currencyFromValRef = createRef();
     const currencyFromRef = createRef();
     const currencyToRef = createRef();
@@ -13,7 +12,7 @@ const Exchanger = () => {
         const fromRef = currencyFromRef.current.value;
         const toRef = currencyToRef.current.value;
         const result = getResultByCurCode(fromRef, toRef);
-        outputResultRef.current.value = result.toFixed(2);
+        outputResultRef.current.value = result.toFixed(4);
     }
 
     const getResultByCurCode = (from, to) => {
@@ -23,8 +22,15 @@ const Exchanger = () => {
         return (curFrom / curTo) * fromValRef;
     }
 
+    const changeInputs = () => {
+        [currencyFromRef.current.value, currencyToRef.current.value]
+            =
+            [currencyToRef.current.value, currencyFromRef.current.value]
+        exchange();
+    }
+
     return (
-        <div className="row justify-content-center ps-3 pe-3">
+        <div className="row justify-content-center ps-3 pe-3 fadeAnimate">
             <div className="col-lg-4 ">
                 <div className="exchanger">
                     <div className="row">
@@ -44,7 +50,8 @@ const Exchanger = () => {
                             </div>
                         </div>
                         <div className="my-3 d-flex justify-content-around">
-                            <img src={`${process.env.PUBLIC_URL}/switch.png`} />
+                            <img src={`${process.env.PUBLIC_URL}/switch.png`}
+                                onClick={changeInputs} />
                         </div>
                         <div>
                             <label>To</label>
