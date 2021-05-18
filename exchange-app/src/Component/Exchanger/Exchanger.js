@@ -37,8 +37,13 @@ const Exchanger = () => {
                         <div>
                             <label>From</label>
                             <div className="d-flex justify-content-between">
-                                <input defaultValue="1" type="number" ref={currencyFromValRef} />
-                                <select ref={currencyFromRef} defaultValue="USD">
+                                <input defaultValue="1"
+                                    type="number"
+                                    ref={currencyFromValRef}
+                                    onKeyUp={exchange} />
+                                <select ref={currencyFromRef}
+                                    defaultValue="USD"
+                                    onChange={exchange}>
                                     {currency.map((cr, key) =>
                                         <option
                                             value={cr.code}
@@ -57,7 +62,9 @@ const Exchanger = () => {
                             <label>To</label>
                             <div className="d-flex justify-content-between">
                                 <input defaultValue="1.7002" disabled ref={outputResultRef} />
-                                <select ref={currencyToRef} defaultValue="AZN">
+                                <select ref={currencyToRef}
+                                        defaultValue="AZN"
+                                        onChange={exchange}>
                                     {currency.map((cr, key) =>
                                         <option
                                             value={cr.code}
